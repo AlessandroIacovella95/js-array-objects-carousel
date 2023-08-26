@@ -40,7 +40,7 @@ function creationItems(image) {
 }
 
 //* Funzione per creare nuovo oggetti
-function printImg() {
+function CreateObject() {
     const newArrayImages = images.map((image, index) => {
       imagesCarousel = {
         image: image.image,
@@ -70,7 +70,7 @@ function nextPrevButton(incrementoDecremento) {
       if (select < 0){
         select = allSlides.length - 1;
     } 
-      
+
     //* Recuperp la nuova slide attiva e vado ad aggiungere la classe active
     const newActiveSlide = allSlides[select];
     newActiveSlide.classList.toggle("active");
@@ -89,8 +89,8 @@ const prev = document.getElementById("prev");
 //* Inizializzo la variabile select
 let select = 0;
 
-//*invoco la funzione printImg
-printImg();
+//*invoco la funzione CreateObject
+CreateObject();
 
 
 //* Evento tasto Next
@@ -102,4 +102,3 @@ next.addEventListener("click", function () {
 prev.addEventListener("click", function () {
   nextPrevButton(select++);
 });
-  
