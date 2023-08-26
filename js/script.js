@@ -71,7 +71,7 @@ function nextPrevButton(incrementoDecremento) {
         select = allSlides.length - 1;
     } 
 
-    //* Recuperp la nuova slide attiva e vado ad aggiungere la classe active
+    //* Recupero la nuova slide attiva e vado ad aggiungere la classe active
     const newActiveSlide = allSlides[select];
     newActiveSlide.classList.toggle("active");
 }
@@ -102,3 +102,16 @@ next.addEventListener("click", function () {
 prev.addEventListener("click", function () {
   nextPrevButton(select++);
 });
+
+//* Inizializzo la variabile per tenere traccia dell'intervallo di autoplay
+let autoPlay;
+
+//* Creo una Funzione per avviare l'autoplay
+function startAutoplay() {
+  autoPlay = setInterval(() => {
+    nextPrevButton(select++)
+  }, 3000);
+}
+
+//* per avviare l'autoplay all'avvio della pagina
+startAutoplay();
