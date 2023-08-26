@@ -28,7 +28,7 @@ const images = [
 ];
 
 //* Funzione per creare literal templates per le varie immagini
-function creationItems(image) {
+function createItems(image) {
     container.innerHTML += `
     <div class="d-none ${image.active}">
       <div>
@@ -40,7 +40,7 @@ function creationItems(image) {
 }
 
 //* Funzione per creare nuovo oggetti
-function CreateObject() {
+function createObject() {
     const newArrayImages = images.map((image, index) => {
       imagesCarousel = {
         image: image.image,
@@ -48,32 +48,33 @@ function CreateObject() {
         text: image.text,
         active: index == select ? "active" : "",
       };
-      creationItems(imagesCarousel);
+      createItems(imagesCarousel);
       return imagesCarousel;
     });
 }
   
 //* Funzione per i bottoni next e bottom
 function nextPrevButton(incrementoDecremento) {
-    //* Recupero tutte le slides
-    const allSlides = document.querySelectorAll(".d-none");
+  //* Recupero tutte le slides
+  const allSlides = document.querySelectorAll(".d-none");
   
-    //* Recupero la slide attiva e vado a rimuovere la classe active
-    const activeSlide = allSlides[incrementoDecremento];
-    activeSlide.classList.toggle("active");
+  //* Recupero la slide attiva e vado a rimuovere la classe active
+  const activeSlide = allSlides[incrementoDecremento];
+  activeSlide.classList.toggle("active");
   
-    incrementoDecremento;
-    //* se superata la lunghezza dell'array torniamo alla prima slide corrispondente in base alla direzione
-    if (select >= allSlides.length) {
-        select = 0;
-      }
-      if (select < 0){
-        select = allSlides.length - 1;
-    } 
+  incrementoDecremento;
+  //* se superata la lunghezza dell'array torniamo alla prima slide corrispondente in base alla direzione
+  if (select >= allSlides.length) {
+    select = 0;
+  }
 
-    //* Recupero la nuova slide attiva e vado ad aggiungere la classe active
-    const newActiveSlide = allSlides[select];
-    newActiveSlide.classList.toggle("active");
+  if (select < 0){
+    select = allSlides.length - 1;
+  } 
+
+  //* Recupero la nuova slide attiva e vado ad aggiungere la classe active
+  const newActiveSlide = allSlides[select];
+  newActiveSlide.classList.toggle("active");
 }
 
 
@@ -89,8 +90,8 @@ const prev = document.getElementById("prev");
 //* Inizializzo la variabile select
 let select = 0;
 
-//*invoco la funzione CreateObject
-CreateObject();
+//* Invoco la funzione CreateObject
+createObject();
 
 
 //* Evento tasto Next
@@ -113,5 +114,5 @@ function startAutoplay() {
   }, 3000);
 }
 
-//* per avviare l'autoplay all'avvio della pagina
+//* Per avviare l'autoplay all'avvio della pagina
 startAutoplay();
