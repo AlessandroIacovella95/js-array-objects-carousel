@@ -1,0 +1,42 @@
+img{
+    width: 100%;
+}
+
+.carousel {
+    position: relative;
+    width: 70%;
+    height: 400px;
+    margin: auto;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.carousel >#container-image{
+  padding: 0;
+}
+
+.items {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+}
+  
+#prev {
+    position: absolute;
+    top: 85%;
+    left: 90%;
+    font-size: 2rem;
+    color: red;
+    cursor: pointer;
+}
+
+#next {
+    position: absolute;
+    top: 5%;
+    left: 90%;
+    font-size: 2rem;
+    color: red;
+    cursor: pointer;
+}
