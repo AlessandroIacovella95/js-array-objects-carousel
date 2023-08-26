@@ -40,3 +40,10 @@ img{
     color: red;
     cursor: pointer;
 }
+
+.active {
+    display: flex !important;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+}
