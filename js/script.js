@@ -158,11 +158,12 @@ stopBtn.addEventListener('click', () => {
 //* Evento al click per avviare la funzione autoplay al reverse
 reverseBtn.addEventListener('click', () => {
   isAutoplayReversed = !isAutoplayReversed;
+  isAutoplayPaused = false;
   stopAutoplay();
   startAutoplay();
   startBtn.classList.add ("display_none")
   stopBtn.classList.remove ("display_none")
-  reverseBtn.classList.add ("display_none")
+  reverseBtn.classList.remove ("display_none")
 });
 
 
