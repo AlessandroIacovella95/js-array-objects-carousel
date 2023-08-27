@@ -77,6 +77,21 @@ function nextPrevButton(incrementoDecremento) {
   newActiveSlide.classList.toggle("active");
 }
 
+let isAutoplayPaused = false;
+let isAutoplayReversed = false;
+
+//* Funzione per avviare l'autoplay
+function startAutoplay() {
+  if (!isAutoplayPaused) {
+      autoPlay = setInterval(() => {
+          if (isAutoplayReversed) {
+            nextPrevButton(select--);;
+          } else {
+            nextPrevButton(select++);
+          }
+      }, 3000);
+  }
+}
 
 //* Recupero elementi dal DOM
 
@@ -86,6 +101,13 @@ const container = document.getElementById("container-image");
 const next = document.getElementById("next");
 //* Recupero tasto Prev dal DOM
 const prev = document.getElementById("prev");
+//* Recupero bottone start dal DOM
+const startBtn = document.getElementById('start');
+//* Recupero bottone stop dal DOM
+const stopBtn = document.getElementById('stop');
+//* Recupero bottone reverse dal DOM
+const reverseBtn = document.getElementById('reverse');
+
 
 //* Inizializzo la variabile select
 let select = 0;
@@ -94,25 +116,53 @@ let select = 0;
 createObject();
 
 
-//* Evento tasto Next
-next.addEventListener("click", function () {
-  nextPrevButton(select--);
-});
+// //* Evento tasto Next
+// next.addEventListener("click", function () {
+//   nextPrevButton(select--);
+// });
 
-//* Evento tasto Prev
-prev.addEventListener("click", function () {
-  nextPrevButton(select++);
-});
+// //* Evento tasto Prev
+// prev.addEventListener("click", function () {
+//   nextPrevButton(select++);
+// });
 
 //* Inizializzo la variabile per tenere traccia dell'intervallo di autoplay
 let autoPlay;
 
-//* Creo una Funzione per avviare l'autoplay
-function startAutoplay() {
-  autoPlay = setInterval(() => {
-    nextPrevButton(select++)
-  }, 3000);
+function stopAutoplay() {
+  clearInterval(autoPlay);
 }
 
 //* Per avviare l'autoplay all'avvio della pagina
-startAutoplay();
+// startAutoplay();
+
+//* Evento al click per avviare la funzione autoplay
+startBtn.addEventListener('click', () => {
+  isAutoplayPaused = false;
+  startAutoplay();
+  startBtn.classList.add ("display_none")
+  reverseBtn.classList.remove ("display_none")
+  stopBtn.classList.remove ("display_none")
+});
+
+//* Evento al click per fermare la funzione autoplay
+stopBtn.addEventListener('click', () => {
+  isAutoplayPaused = true;
+  stopAutoplay();
+  startBtn.classList.remove ("display_none")
+  stopBtn.classList.add ("display_none")
+  reverseBtn.classList.remove ("display_none")
+
+});
+
+//* Evento al click per avviare la funzione autoplay al reverse
+reverseBtn.addEventListener('click', () => {
+  isAutoplayReversed = !isAutoplayReversed;
+  stopAutoplay();
+  startAutoplay();
+  startBtn.classList.remove ("display_none")
+  stopBtn.classList.remove ("display_none")
+  reverseBtn.classList.add ("display_none")
+});
+
+

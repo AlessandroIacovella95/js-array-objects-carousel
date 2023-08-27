@@ -23,7 +23,7 @@ img{
     position: absolute;
 }
   
-#prev {
+/* #prev {
     position: absolute;
     top: 85%;
     left: 90%;
@@ -39,7 +39,7 @@ img{
     font-size: 2rem;
     color: red;
     cursor: pointer;
-}
+} */
 
 .active {
     display: flex !important;
@@ -62,4 +62,8 @@ p{
     left: 10%;
     color: white;
     font-size: 1rem;
+}
+
+.display_none{
+    display: none;
 }
