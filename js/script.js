@@ -160,9 +160,12 @@ reverseBtn.addEventListener('click', () => {
   isAutoplayReversed = !isAutoplayReversed;
   stopAutoplay();
   startAutoplay();
-  startBtn.classList.remove ("display_none")
+  startBtn.classList.add ("display_none")
   stopBtn.classList.remove ("display_none")
   reverseBtn.classList.add ("display_none")
 });
+
+
+
 
 
